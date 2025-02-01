@@ -12,3 +12,4 @@ Route::get('/loyalty-settings', [LoyaltyProgramController::class, 'index']);
 Route::post('/loyalty-settings', [LoyaltyProgramController::class, 'save']);
 
 
+
