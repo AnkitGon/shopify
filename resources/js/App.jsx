@@ -25,7 +25,6 @@ if (document.getElementById('app')) {
         <BrowserRouter>
             <App />
         </BrowserRouter>
-
         ,
         document.getElementById("app"));
 }

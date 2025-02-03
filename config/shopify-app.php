@@ -389,14 +389,9 @@ return [
             'address' =>  env('APP_URL') . '/webhook/app-uninstalled'
         ],
         [
-            'topic' => 'CHECKOUTS_CREATE',
-            'address' => 'https://shopify-first.test/webhook/checkouts/create'
-        ],
-        [
-            'topic' => 'CHECKOUTS_UPDATE',
-            'address' => 'https://shopify-first.test/webhook/checkouts/update'
+            'topic' => 'ORDERS_CREATE',
+            'address' =>  env('APP_URL') . '/webhook/orders-create'
         ]
-
     ],
 
     /*

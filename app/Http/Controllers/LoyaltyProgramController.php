@@ -13,7 +13,6 @@ class LoyaltyProgramController extends Controller
 {
     public function index(){
         $programs = LoyaltyProgram::first();
-
         return ApiResponse::success($programs);
     }
     public function save(Request $request)

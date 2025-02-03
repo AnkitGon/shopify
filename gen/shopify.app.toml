@@ -1,0 +1,19 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "1066b1f3bae1e3a810fb455dac50f256"
+application_url = "https://shopify-first.test/"
+embedded = true
+name = "Gen"
+handle = "test-17017"
+
+[webhooks]
+api_version = "2025-01"
+
+[auth]
+redirect_urls = [ "https://shopify-first.test/authenticate" ]
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "first-dem.myshopify.com"

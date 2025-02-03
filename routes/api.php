@@ -8,8 +8,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::group(['middleware' => 'verify.shopify'], function () {
+
+});
 Route::get('/loyalty-settings', [LoyaltyProgramController::class, 'index']);
 Route::post('/loyalty-settings', [LoyaltyProgramController::class, 'save']);
-
-
-

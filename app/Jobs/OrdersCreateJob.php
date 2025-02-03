@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Osiset\ShopifyApp\Objects\Values\ShopDomain;
 use stdClass;
 
-class CheckoutsCreateJob implements ShouldQueue
+class OrdersCreateJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -49,8 +49,8 @@ class CheckoutsCreateJob implements ShouldQueue
     public function handle()
     {
         // Convert domain
-        Log::info("created");
-        // $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+        $this->shopDomain = ShopDomain::fromNative($this->shopDomain);
+        Log::info([$this->data,$this->shopDomain]);
         // Do what you wish with the data
         // Access domain name as $this->shopDomain->toNative()
     }
