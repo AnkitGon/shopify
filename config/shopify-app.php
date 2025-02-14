@@ -390,7 +390,7 @@ return [
         ],
         [
             'topic' => 'ORDERS_CREATE',
-            'address' =>  env('APP_URL') . '/webhook/orders-create'
+            'address' => env('APP_URL') . '/webhook/orders-create'
         ]
     ],
 

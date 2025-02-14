@@ -1,19 +1,20 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "1066b1f3bae1e3a810fb455dac50f256"
-application_url = "https://shopify-first.test/"
+application_url = "https://f702-152-59-35-114.ngrok-free.app/"
 embedded = true
 name = "Gen"
 handle = "test-17017"
+
+[build]
+dev_store_url = "starkqs.myshopify.com"
+include_config_on_deploy = true
 
 [webhooks]
 api_version = "2025-01"
 
 [auth]
-redirect_urls = [ "https://shopify-first.test/authenticate" ]
+redirect_urls = [ "https://f702-152-59-35-114.ngrok-free.app/authenticate" ]
 
 [pos]
 embedded = false
-
-[build]
-dev_store_url = "first-dem.myshopify.com"

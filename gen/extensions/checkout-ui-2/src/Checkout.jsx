@@ -23,8 +23,7 @@ function Extension() {
     useEffect(() => {
         const fetchPointPerSpent = async () => {
             try{
-                const res = await axios.get('http://773a-152-59-35-60.ngrok-free.app//api/loyalty-settings')
-                console.log(res);
+                const res = await axios.get('https://shopify-ankit.test/api/loyalty-settings')
 
                 setPointsPerDollar(res.data.data.points_per_dollar);
             }catch(error){

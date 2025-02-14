@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use Osiset\ShopifyApp\Util;
 
@@ -23,6 +26,11 @@ class AuthController extends Controller
      */
     public function index()
     {
+        // $shop = Auth::user();
+
+        // $response = $shop->api()->rest('GET', '/admin/api/2025-01/webhooks.json');
+        // dd($response);
+
         return view('layouts.app');
     }
 
