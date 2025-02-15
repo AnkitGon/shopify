@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ApiResponse;
+use App\Models\CustomerPoint;
 use App\Models\LoyaltyProgram;
 use Exception;
 use Illuminate\Http\Request;
@@ -34,6 +35,11 @@ class LoyaltyProgramController extends Controller
             return ApiResponse::error($exception->getMessage());
 
         }
+    }
+
+    public function customerPoints($customerId){
+        $myPoints = CustomerPoint::where('customer_id', $customerId)->sum('point');
+        return ApiResponse::success($myPoints);
     }
 
 }

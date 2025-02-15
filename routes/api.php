@@ -11,5 +11,6 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/loyalty-settings', [LoyaltyProgramController::class, 'index']);
 Route::post('/loyalty-settings', [LoyaltyProgramController::class, 'save']);
+Route::get('/customer-points/{customerId}', [LoyaltyProgramController::class, 'customerPoints']);
 
 

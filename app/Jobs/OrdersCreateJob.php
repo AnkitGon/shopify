@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\LoyaltyProgramController;
+use App\Models\CustomerPoint;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -108,18 +109,26 @@ class OrdersCreateJob implements ShouldQueue
             ];
 
             $client = $shop->api()->graph($query, $variables);
-            if($client['errors'] === false && $client['status'] === 200){
+
+            if ($client['errors'] === false && $client['status'] === 200) {
                 $amountAdded = $client['body']['container']['data']['storeCreditAccountCredit']['storeCreditAccountTransaction']['amount']['amount'];
                 $currencyCode = $client['body']['container']['data']['storeCreditAccountCredit']['storeCreditAccountTransaction']['amount']['currencyCode'];
                 $totalAmount = $client['body']['container']['data']['storeCreditAccountCredit']['storeCreditAccountTransaction']['account']['balance']['amount'];
 
-                Log::info('Amount Added: ' . $amountAdded . ', Currency code: ' . $currencyCode . ', Total amount: '. $totalAmount);
+                CustomerPoint::updateOrCreate(
+                    ['customer_id' => $this->data->customer->id],
+                    [
+                        'customer_graphql_id' => $customerGrapghqlId,
+                        'point' => $amountAdded,
+                    ]
+                );
+
+                Log::info('Amount Added: ' . $amountAdded . ', Currency code: ' . $currencyCode . ', Total amount: ' . $totalAmount);
             }
         } catch (\Throwable $th) {
             Log::info('-----------------------------------Exception--------------------------------');
-            Log::info([$th]);
+            Log::info($th->getMessage());
             Log::info('-----------------------------------End Exception--------------------------------');
         }
-
     }
 }

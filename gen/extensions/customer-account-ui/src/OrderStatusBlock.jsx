@@ -10,6 +10,7 @@ import {
 } from '@shopify/ui-extensions-react/customer-account';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 export default reactExtension(
     'customer-account.profile.block.render',
@@ -17,12 +18,23 @@ export default reactExtension(
 );
 
 function Extension() {
-    const customer = useAuthenticatedAccountCustomer();
+    const customerId = useAuthenticatedAccountCustomer();
+    const [myPoints, setmyPoints] = useState(1);
 
     useEffect(() => {
-        console.log(customer);
+        const fetchCustomerPoints = async () => {
+            try{
+                const res = await axios.get(`https://shopify-ankit.test/api/customer-points/${customerId.id}`)
 
-    }, [customer]);
+                setmyPoints(res.data.data);
+            }catch(error){
+                console.error("Error fetching points:", error);
+            }
+        }
+
+        fetchCustomerPoints();
+
+    }, [customerId]);
 
 
     return (
@@ -37,7 +49,7 @@ function Extension() {
                     <Heading>Loyalty Points</Heading>
                 </BlockStack>
                 <BlockStack spacing="loose">
-                    <Text appearance="accent">Add</Text>
+                    <Text appearance="accent">{myPoints}</Text>
                 </BlockStack>
             </Grid>
         </Card>

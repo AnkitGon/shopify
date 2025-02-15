@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "1066b1f3bae1e3a810fb455dac50f256"
-application_url = "https://f702-152-59-35-114.ngrok-free.app/"
+application_url = "https://d4b6-152-59-35-114.ngrok-free.app/"
 embedded = true
 name = "Gen"
 handle = "test-17017"
@@ -14,7 +14,7 @@ include_config_on_deploy = true
 api_version = "2025-01"
 
 [auth]
-redirect_urls = [ "https://f702-152-59-35-114.ngrok-free.app/authenticate" ]
+redirect_urls = [ "https://d4b6-152-59-35-114.ngrok-free.app/authenticate" ]
 
 [pos]
 embedded = false
