@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-outline-dark">Dark</button>
+
+{% schema %}
+{
+    "name": "Add to compare",
+    "target": "section.main-product",
+    "stylesheet": "bootstrap.min.css"
+}
+{% endschema %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        const addToCartBtn = document.querySelector("form[action*='/cart/add'] button");
+
+        if (addToCartBtn) {
+            const customButton = document.createElement("button");
+            customButton.innerText = "Custom Button";
+            customButton.className = "btn custom-button";
+
+            // Insert the button above the "Add to Cart" button
+            addToCartBtn.parentNode.insertBefore(customButton, addToCartBtn);
+        }
+    });
+
+</script>
